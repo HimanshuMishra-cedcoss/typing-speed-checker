@@ -12,13 +12,11 @@ var p8="One day two cats found a loaf of bread. Both the cats wanted the bread s
 var p9="One day, Ramu had to leave for another village. So his mother said, Child, since there is a forest on the way, do not go alone. Take your friend with you. It is said, it is always better to be double than single. Ramu’s best friend was Shyamu. Shyamu readily agreed to go with Ramu. They left for next village."
 var p10="A selfish fox once invited a stork to dinner at his home in a hollow tree. That evening, the stork flew to the fox’s home and knocked on the door with her long beak. The fox opened the door and said, Please come in and share my food."
 var paraArr=[p1,p2,p3,p4,p5,p6,p7,p8,p9,p10];
-
 //console.log(paraArr);
 //console.log(paraBox.innerHTML)
-
 var paraPrintBox=document.querySelector(".paraarea")
-
 // console.log(paraPrintBox);
+paraPrintBox.disabled=true;
 var st;
 var et;
 var wt;
@@ -27,9 +25,8 @@ var randomNum;
 var paraBox=document.querySelector(".para");
 document.getElementById("sta").addEventListener("click", clockstart);
 sto.style.display="none"
+
 function clockstart(){
-	
-	
 	randomNum= Math.floor(Math.random()*paraArr.length);
 	// console.log(randomNum);
 	paraBox.textContent=paraArr[randomNum];
@@ -39,32 +36,45 @@ function clockstart(){
 	sto.style.display="inline-block"
 	sta.style.display="none";
 	document.getElementById("sto").disabled=false;
+	paraPrintBox.disabled=false;
     a=setInterval(stopwatch,1000);
+    document.getElementById("cd").innerHTML="TIME REMANING - 3:0";
+   	min=3;
+    ti=min*60;
 
 }
 
 document.getElementById("sto").addEventListener("click", clockstop);
+
 function clockstop()
-{
+{ 
+	if(paraPrintBox.value=="")
+	{
+		alert("You must be type to calculate your speed");
+		// console.log(paraPrintBox.value);
+	}
+	else
+	{
 	var date =new Date();
 	 et=date.getTime();
 	var tt= (et-st)/1000;
-	console.log(tt);
+	//console.log(tt);
 	wt=paraPrintBox.value;
-	console.log(wt);
+	//console.log(wt);
 	let count=wt.split(" ").length;
-	console.log(count)
+	//console.log(count)
 	let wpm=Math.floor((count/tt)*60);
 	var msg = "Your speed is"+ " "+wpm+" "+"words per minute";
 	msg+= compare(paraBox.textContent,wt )
 	paraBox.textContent= msg;
 	sto.style.display="none";
 	sta.style.display="inline-block"
-	paraPrintBox.value=" ";
-	console.log(paraPrintBox);
+	paraPrintBox.value="";
+	//console.log(paraPrintBox);
+	paraPrintBox.disabled=true;
 	document.getElementById("sto").disabled=true;
 	clearInterval(a);
-}
+}}
 
 function compare(s1,s2){
 	var w1 =s1.split(" ");
@@ -89,8 +99,8 @@ var seconds;
 function stopwatch(){
 	minutes=Math.floor(ti/60);
 	seconds=ti%60;
-	console.log(minutes);
-	console.log(seconds);
+	// console.log(minutes);
+	// console.log(seconds);
 	document.getElementById("cd").innerHTML="Time Remaining"+" - "+ minutes+":"+seconds;
 	ti--;
 	if(minutes==0&&seconds==0)
@@ -99,9 +109,6 @@ function stopwatch(){
 		clearInterval(a);
 		min=3;
         ti=min*60;
+        paraPrintBox.disabled=true;
 	}
 }
-
-
-
-
