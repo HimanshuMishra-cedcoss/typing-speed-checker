@@ -33,7 +33,7 @@ function clockstart(){
 	var date= new Date();
     st= date.getTime();
 	//console.log(st);
-	sto.style.display="inline-block"
+	sto.style.display="inline-block";
 	sta.style.display="none";
 	document.getElementById("sto").disabled=false;
 	paraPrintBox.disabled=false;
@@ -50,7 +50,7 @@ function clockstop()
 { 
 	if(paraPrintBox.value=="")
 	{
-		alert("You must be type to calculate your speed");
+		alert("You must type to calculate your speed");
 		// console.log(paraPrintBox.value);
 	}
 	else
@@ -110,5 +110,7 @@ function stopwatch(){
 		min=3;
         ti=min*60;
         paraPrintBox.disabled=true;
+        sta.style.display="inline-block";
+        sto.style.display="none";
 	}
 }
