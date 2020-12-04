@@ -1,19 +1,26 @@
 body{
 	/*background: rgb(63,94,251);
 background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);*/
-background-image: url(typing.png);
+/*background-image: url(typing1.jpg);
+background-size:cover;
+background-position: fixed;
+background-repeat: no-repeat;*/
+background-color:#6dd5ed;
 }
 .time{
 	font-size: 25px;
-	color: white;
+/* 	color: white; */
 	font-style: bold;
 }
 .para{
 	font-size: 22px;
-	/*color: white;*/
+/* 	color: white; */
 	font-style: bold;
 	text-align: center;	
 }
-/*h1{
-	color: white;
-}*/
+h1{
+	font-family: sofia;
+}
+/* .time{
+	font-family: yeon sung;
+} */
